@@ -2,13 +2,13 @@
 title: "Flutter: Dynamic Weather Application"
 description: "Exploration des API et des données en temps réel"
 pubDate: 'Nov 15 2024'
-heroImage: "../img/weather_app_h.jpg"
+heroImage: "/Portfolio/img/weather_app_h.jpg"
 ---
 
 ## Flutter: Dynamic Weather Application
 
 <div style="margin-bottom: 50px;">
-  <img src="/img/wah.jpg" alt="Weather App Image">
+  <img src="/Portfolio/img/wah.jpg" alt="Weather App Image">
 </div>
 
 
