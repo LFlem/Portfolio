@@ -2,13 +2,13 @@
 title: "Cryptography: A Comprehensive Cryptosystem Implementation"
 description: "A C++ project to develop a cryptography system inspired by PGP, integrating symmetric and asymmetric algorithms."
 pubDate: 'Jun 11 2023'
-heroImage: "../img/cryptography.webp"
+heroImage: "/Portfolio/img/cryptography.webp"
 ---
 
 ## Cryptography: A Comprehensive Cryptosystem Implementation
 
 <div style="margin-bottom: 50px;">
-  <img src="/img/cryptography.webp" alt="Weather App Image">
+  <img src="/Portfolio/img/cryptography.webp" alt="Weather App Image">
 </div>
 
 In this project, I developed a complete cryptosystem named **Cryptography**, designed to secure data exchanges using advanced cryptographic techniques. Inspired by the well-known PGP (Pretty Good Privacy) protocol, this project required mastery of symmetric and asymmetric encryption algorithms, as well as handling prime numbers and data conversions.
