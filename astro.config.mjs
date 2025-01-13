@@ -10,7 +10,7 @@ export default defineConfig({
     enabled: false
   },
   site:'https://LFlem.github.io',
-  base: '',
+  base: '/Portfolio',
   trailingSlash: 'always',
   integrations: [react(), tailwind(), sitemap()]
 });
