@@ -9,5 +9,8 @@ export default defineConfig({
   devToolbar: {
     enabled: false
   },
+  site:'https://LFlem.github.io',
+  base: process.env.NODE_ENV === 'development' ? '' : '/Portfolio',
+  trailingSlash: 'always',
   integrations: [react(), tailwind(), sitemap()]
 });
