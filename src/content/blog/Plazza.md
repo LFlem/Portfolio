@@ -2,13 +2,13 @@
 title: "Plazza: Pizzeria Simulation"
 description: "A C++ project simulating a multi-kitchen pizzeria, focusing on process management and synchronization."
 pubDate: 'May 15 2023'
-heroImage: "/Portfolio/img/plazza.webp"
+heroImage: "../img/plazza.webp"
 ---
 
 ## Plazza: Pizzeria Simulation
 
 <div style="margin-bottom: 50px;">
-  <img src="/Portfolio/img/plazza.webp" alt="Weather App Image">
+  <img src="/img/plazza.webp" alt="Weather App Image">
 </div>
 
 

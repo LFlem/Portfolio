@@ -2,14 +2,14 @@
 title: "R-Type: Multiplayer Game Development"
 description: "A collaborative project to recreate the classic R-Type game with a custom game engine and networked multiplayer support."
 pubDate: 'Nov 08 2023'
-heroImage: "/Portfolio/img/rtype.jpg"
+heroImage: "../img/rtype.jpg"
 ---
 
 ## R-Type: Multiplayer Game Development
 
 
 <div style="margin-bottom: 50px;">
-  <img src="/Portfolio/img/rtype.jpg" alt="Weather App Image">
+  <img src="/img/rtype.jpg" alt="Weather App Image">
 </div>
 
 

@@ -10,7 +10,7 @@ export default defineConfig({
     enabled: false
   },
   site:'https://LFlem.github.io',
-  base: process.env.NODE_ENV === 'development' ? '' : '/Portfolio',
+  base: '',
   trailingSlash: 'always',
   integrations: [react(), tailwind(), sitemap()]
 });
