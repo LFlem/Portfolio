@@ -1,0 +1,32 @@
+---
+import SocialIcons from '../SocialIcons.astro';
+import Title from '../atoms/Title.astro';
+import "./about.css"
+
+
+---
+
+<section id="about" class="about">
+	<div class="about__container">
+		<img
+			class="about__img"
+			src="https://www.bpocenter.com.bo/wp-content/uploads/2017/11/10.jpg"
+			alt="Foto de perfil de Jhon Doe"
+		/>
+
+		<div class="about__content">
+			<Title margin="1rem" contenido="About me" />
+			<p class="about__text">
+				I'm Hanim Moussa Yari, a Master 1 student specializing in software,
+				mobile and IoT development at Paris Ynov Campus.
+				Passionate about creating innovative solutions, I combine technical
+				expertise in development (C++, Python, Unity, Flutter, etc.)
+				with practical experience, particularly in program development,
+				video games and mobile applications. Explore my work and discover
+				how I transform ideas into concrete solutions.
+			</p>
+			<SocialIcons width="25" height="25"/>
+		</div>
+	</div>
+
+</section>

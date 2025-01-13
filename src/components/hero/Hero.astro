@@ -1,0 +1,25 @@
+---
+import './hero.css';
+import Boton from '../atoms/Boton.astro';
+---
+
+<section class="hero">
+
+	<div class="hero__container">
+		<div class="text__content">
+			<h2 class="hero__text">Hello! My name is</h2>
+			<h1 class="hero__title color__gradiente">Hanim MOUSSA YARI</h1>
+			<p class="hero__text">
+				I am a Mobile Software Developer based in France (Paris).
+			</p>
+			<Boton href="#about" texto="More about me!"/>
+		</div>
+    <img
+		class="hero__img"
+		src="/img/Hanim.jpeg"
+		alt="Jhon Doe"
+		width="384"
+    	height="384"
+	/>
+	</div>
+</section>
