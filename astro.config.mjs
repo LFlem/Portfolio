@@ -12,5 +12,8 @@ export default defineConfig({
   site:'https://LFlem.github.io',
   base: '/Portfolio',
   trailingSlash: 'always',
-  integrations: [react(), tailwind(), sitemap()]
+  integrations: [react(), tailwind(), sitemap()],
+  build: {
+    assetPrefix: '/Portfolio'
+  }
 });

@@ -20,14 +20,14 @@ const posts = (await getCollection('blog')).sort(
         title={post.data.title}
           content={post.data.description}
           img={post.data.heroImage}
-          href={`/blog/${post.slug}/`}>
+          href={`${import.meta.env.BASE_URL}blog/${post.slug}/`}>
 
          <FormattedDate  slot="date" clase="text-white" date={post.data.pubDate}/>
          </CardBlog>
       ))
     }
   </div>
-  <!-- <div class="flex justify-center m-5 max-w-full px-3">
-    <Boton href="/blog" texto="More"/>
-  </div> -->
+  <div class="flex justify-center m-5 max-w-full px-3">
+    <Boton href={`${import.meta.env.BASE_URL}blog/`} texto="More"/>
+  </div>
 </section>
