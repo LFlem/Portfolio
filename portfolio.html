@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio — Hanim Moussa Yari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --bg:       #f7f6f3;
+      --bg2:      #eeecea;
+      --surface:  #ffffff;
+      --border:   #e2e0db;
+      --text:     #1a1917;
+      --muted:    #6b6762;
+      --accent:   #2563eb;
+      --accent2:  #0ea5e9;
+      --tag-bg:   #e8f0fe;
+      --tag-text: #1d4ed8;
+      --radius:   12px;
+      --transition: 0.25s cubic-bezier(.4,0,.2,1);
+    }
+    [data-theme="dark"] {
+      --bg:       #0f0e0d;
+      --bg2:      #181715;
+      --surface:  #1e1c1a;
+      --border:   #2e2c29;
+      --text:     #f0ede8;
+      --muted:    #8a8580;
+      --accent:   #60a5fa;
+      --accent2:  #38bdf8;
+      --tag-bg:   #1e2d4a;
+      --tag-text: #93c5fd;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background var(--transition), color var(--transition);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 64px;
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 500;
+      color: var(--muted);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    /* Theme toggle */
+    .theme-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+      display: grid; place-items: center;
+      font-size: 1rem;
+      transition: background var(--transition), border var(--transition), transform 0.2s;
+    }
+    .theme-btn:hover { transform: scale(1.08); }
+    .lang-btn {
+      min-width: 52px;
+      height: 40px;
+      padding: 0 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      transition: background var(--transition), border var(--transition), transform 0.2s;
+    }
+    .lang-btn:hover { transform: scale(1.05); }
+
+    /* ── SECTIONS ── */
+    section { padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem); max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.75rem;
+    }
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.15; margin-bottom: 2.5rem;
+    }
+    .divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 0 clamp(1.5rem, 5vw, 4rem);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding-top: 64px;
+      max-width: 1100px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem; font-weight: 500;
+      color: var(--muted); margin-bottom: 1.5rem;
+    }
+    .hero-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.2); }
+      50% { box-shadow: 0 0 0 6px rgba(34,197,94,0.08); }
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 400; color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .hero-desc {
+      max-width: 540px;
+      color: var(--muted); font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem; font-weight: 500;
+      cursor: pointer; transition: all var(--transition);
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); text-decoration: none; color: #fff; }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { background: var(--surface); transform: translateY(-1px); text-decoration: none; }
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 4rem;
+      padding-top: 2rem; border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .stat-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem; font-weight: 800; color: var(--text);
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: start;
+    }
+    .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 1rem; }
+    .about-info { display: flex; flex-direction: column; gap: 1rem; }
+    .info-row {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+    }
+    .info-icon { font-size: 1rem; }
+    .info-label { color: var(--muted); min-width: 80px; }
+    .info-val { color: var(--text); font-weight: 500; }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .skill-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .skill-card-header {
+      display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
+    }
+    .skill-icon { font-size: 1.3rem; }
+    .skill-cat { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      background: var(--tag-bg); color: var(--tag-text);
+      font-size: 0.75rem; font-weight: 500;
+    }
+
+    /* ── TIMELINE (parcours) ── */
+    .timeline { position: relative; padding-left: 1.5rem; }
+    .timeline::before {
+      content: ''; position: absolute;
+      left: 0; top: 8px; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .timeline-item {
+      position: relative; margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+    .timeline-item::before {
+      content: ''; position: absolute;
+      left: -1.5rem; top: 8px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px var(--bg), 0 0 0 4px var(--accent);
+    }
+    .tl-date {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--accent); margin-bottom: 0.25rem;
+      letter-spacing: 0.05em;
+    }
+    .tl-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 1rem; margin-bottom: 0.15rem;
+    }
+    .tl-org { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
+    .tl-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.5; }
+    .badge {
+      display: inline-block; padding: 0.2rem 0.6rem;
+      border-radius: 20px; font-size: 0.7rem; font-weight: 600;
+      background: var(--tag-bg); color: var(--tag-text);
+      margin-left: 0.5rem; vertical-align: middle;
+    }
+    .tl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 3rem; }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem;
+    }
+    .cert-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .cert-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .cert-issuer { font-size: 0.75rem; color: var(--muted); }
+    .cert-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; }
+    .cert-date { font-size: 0.75rem; color: var(--accent); font-weight: 500; }
+    .cert-link { font-size: 0.8rem; margin-top: auto; }
+
+    /* ── GITHUB PROJECTS ── */
+    #projects-loader {
+      display: flex; align-items: center; gap: 0.75rem;
+      color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem;
+    }
+    .spinner {
+      width: 20px; height: 20px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .gh-header {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;
+    }
+    .gh-profile {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 100px; padding: 0.4rem 1rem 0.4rem 0.4rem;
+    }
+    .gh-avatar {
+      width: 32px; height: 32px; border-radius: 50%; object-fit: cover;
+    }
+    .gh-username { font-size: 0.875rem; font-weight: 500; }
+    .gh-stats { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .gh-stat {
+      display: flex; align-items: center; gap: 0.35rem;
+      font-size: 0.8rem; color: var(--muted);
+    }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .project-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(37,99,235,0.08);
+    }
+    .proj-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .proj-desc { font-size: 0.85rem; color: var(--muted); flex: 1; line-height: 1.55; }
+    .proj-meta {
+      display: flex; gap: 1rem; align-items: center;
+      font-size: 0.78rem; color: var(--muted); flex-wrap: wrap;
+    }
+    .proj-meta span { display: flex; align-items: center; gap: 0.3rem; }
+    .lang-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      display: inline-block; flex-shrink: 0;
+    }
+    .proj-link {
+      font-size: 0.8rem; font-weight: 500; color: var(--accent);
+      display: flex; align-items: center; gap: 0.3rem;
+      margin-top: auto;
+    }
+    .proj-link:hover { text-decoration: none; opacity: 0.8; }
+    #gh-username-input-section {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      margin-bottom: 2rem;
+      display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;
+    }
+    .gh-input {
+      flex: 1; min-width: 200px;
+      padding: 0.65rem 1rem;
+      border-radius: 8px; border: 1px solid var(--border);
+      background: var(--bg); color: var(--text);
+      font-size: 0.9rem; font-family: 'DM Sans', sans-serif;
+      outline: none; transition: border-color var(--transition);
+    }
+    .gh-input:focus { border-color: var(--accent); }
+    .gh-input::placeholder { color: var(--muted); }
+    #gh-error {
+      color: #ef4444; font-size: 0.85rem; margin-bottom: 1rem; display: none;
+    }
+    .filter-bar {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+    }
+    .filter-btn {
+      padding: 0.35rem 0.85rem; border-radius: 20px; font-size: 0.78rem;
+      border: 1px solid var(--border); background: transparent; color: var(--muted);
+      cursor: pointer; transition: all var(--transition);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent); color: #fff; border-color: var(--accent);
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrapper {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); color: var(--text);
+      font-size: 0.875rem; font-weight: 500;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .contact-item:hover { border-color: var(--accent); transform: translateX(4px); text-decoration: none; }
+    .contact-icon { font-size: 1.1rem; width: 24px; text-align: center; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label { font-size: 0.8rem; font-weight: 500; color: var(--muted); }
+    .form-input, .form-textarea {
+      padding: 0.75rem 1rem; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--surface);
+      color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      outline: none; transition: border-color var(--transition);
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+    .form-note { font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem; }
+    .form-status { font-size: 0.8rem; min-height: 1.2rem; margin-top: 0.35rem; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center; padding: 2rem clamp(1.5rem,5vw,4rem);
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .about-grid, .contact-wrapper, .tl-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── FADE IN ── */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Hmy<span>.</span>portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#about" id="nav-about-link">À propos</a></li>
+    <li><a href="#skills" id="nav-skills-link">Compétences</a></li>
+    <li><a href="#parcours" id="nav-parcours-link">Parcours</a></li>
+    <li><a href="#projects" id="nav-projects-link">Projets</a></li>
+    <li><a href="#contact" id="nav-contact-link">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-btn" id="langToggle" title="Switch to English">EN</button>
+    <button class="theme-btn" id="themeToggle" title="Changer le thème">🌙</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">
+    <span class="hero-dot"></span>
+    <span id="hero-availability">Disponible pour de nouvelles opportunités</span>
+  </div>
+  <h1 class="hero-name" id="hero-name">Hanim MOUSSA YARI</h1>
+  <p class="hero-title"><span id="hero-prefix">Développeur</span> <span class="highlight" id="hero-role">Full Stack & Mobile</span></p>
+  <p class="hero-desc" id="hero-bio">
+    Développeur Full Stack avec 3 ans d'experience en solutions agiles, je transforme les besoins fonctionnels en solutions techniques performantes, du backend à l'interface utilisateur.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary" id="hero-cta-projects">Voir mes projets →</a>
+    <a href="#contact" class="btn btn-ghost" id="hero-cta-contact">Me contacter</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-val" id="stat-repos">—</div>
+      <div class="stat-label" id="stat-label-repos">Repos publics</div>
+    </div>
+    <div>
+      <div class="stat-val" id="stat-stars">—</div>
+      <div class="stat-label" id="stat-label-stars">Stars reçues</div>
+    </div>
+    <div>
+      <div class="stat-val" id="stat-years">3+</div>
+      <div class="stat-label" id="stat-label-years">Ans d'expérience</div>
+    </div>
+    <div>
+      <div class="stat-val" id="stat-langs">—</div>
+      <div class="stat-label" id="stat-label-langs">Langages utilisés</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about" class="fade-in">
+  <p class="section-label">À propos</p>
+  <h2>Qui suis-je ?</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>Determine a transformer les idees en applications concretes, je conçois des solutions full stack et mobiles en environnement Agile avec un fort accent sur la qualite logicielle.</p>
+      <p>J'ai travaille sur des applications web, ERP et PWA, avec des stacks TypeScript, Python, Node.js, Next.js, Flutter et PostgreSQL, en passant par l'authentification JWT et les APIs REST.</p>
+      <p>Autonome et force de proposition, je maintiens une veille active sur les technologies emergentes (IA, IoT, XR) et l'amelioration continue des workflows de developpement.</p>
+    </div>
+    <div class="about-info">
+      <div class="info-row"><span class="info-icon">📍</span><span class="info-label">Localisation</span><span class="info-val" id="info-location">France</span></div>
+      <div class="info-row"><span class="info-icon">💼</span><span class="info-label">Statut</span><span class="info-val">Alternance/Stage Master 2 dès septembre 2026</span></div>
+      <div class="info-row"><span class="info-icon">🎓</span><span class="info-label">Formation</span><span class="info-val" id="info-edu">Master Developpement Mobile & IoT (Paris Ynov Campus)</span></div>
+      <div class="info-row"><span class="info-icon">🌍</span><span class="info-label">Langues</span><span class="info-val">Francais (pro) / Anglais (B1)</span></div>
+      <div class="info-row"><span class="info-icon">⚡</span><span class="info-label">Specialite</span><span class="info-val" id="info-spec">Full Stack, Mobile, API et IoT</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="skills" class="fade-in">
+  <p class="section-label">Compétences</p>
+  <h2>Stack technique</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <span class="skill-icon">🎨</span>
+        <span class="skill-cat">Frontend</span>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">JavaScript (ES6+)</span><span class="tag">TypeScript</span><span class="tag">React</span>
+        <span class="tag">Next.js</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Flutter Web</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <span class="skill-icon">⚙️</span>
+        <span class="skill-cat">Backend</span>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Node.js</span><span class="tag">TypeScript</span><span class="tag">Python</span>
+        <span class="tag">PHP</span><span class="tag">C/C++</span><span class="tag">REST API</span><span class="tag">JWT</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <span class="skill-icon">🗄️</span>
+        <span class="skill-cat">Bases de données</span>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">MySQL</span>
+        <span class="tag">SQLite</span><span class="tag">Firebase</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <span class="skill-icon">☁️</span>
+        <span class="skill-cat">DevOps & Cloud</span>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Docker</span><span class="tag">Jenkins</span><span class="tag">CI/CD</span>
+        <span class="tag">Git</span><span class="tag">Sentry</span><span class="tag">Linux</span><span class="tag">Windows Server</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <span class="skill-icon">🔧</span>
+        <span class="skill-cat">Outils</span>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Odoo</span><span class="tag">WordPress</span><span class="tag">Parse Server</span>
+        <span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Postman</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <span class="skill-icon">📐</span>
+        <span class="skill-cat">Méthodes</span>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Agile/Scrum</span><span class="tag">TDD</span><span class="tag">Architecture logicielle</span>
+        <span class="tag">Documentation technique</span><span class="tag">Travail collaboratif</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PARCOURS -->
+<section id="parcours" class="fade-in">
+  <p class="section-label">Parcours</p>
+  <h2>Expérience & Formation</h2>
+  <div class="tl-grid">
+    <div>
+      <p style="font-size:0.8rem;font-weight:600;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;">💼 Expériences</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-date">Juillet — Septembre 2025</div>
+          <div class="tl-title">Developpeur Mobile <span class="badge">Stage</span></div>
+          <div class="tl-org">P'titsPas · France</div>
+          <div class="tl-desc">Developpement d'une PWA multi-roles avec architecture MVC, authentification JWT et gestion des droits d'acces. Integration backend NestJS/PostgreSQL avec optimisation UX (+20% de performance) en equipe de 6 personnes.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-date">Fevrier — Mai 2024</div>
+          <div class="tl-title">Developpeur Jeu Mobile <span class="badge">Stage</span></div>
+          <div class="tl-org">Leti Arts · Ghana</div>
+          <div class="tl-desc">Developpement de fonctionnalites Unity (IA, mecaniques avancees), optimisation JavaScript/HTML5 (+25%) et creation d'un site web interactif de promotion. Collaboration avec une equipe internationale de 8 developpeurs.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-date">Septembre 2023 — Janvier 2024</div>
+          <div class="tl-title">Assistant Pedagogique <span class="badge">Alternance</span></div>
+          <div class="tl-org">Epitech</div>
+          <div class="tl-desc">Animation de modules (architecture logicielle, IoT, CI/CD, gestion de projet IT), accompagnement de 40+ etudiants sur projets C/C++ et Python, amelioration du taux de reussite de +30%.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-date">Septembre 2022 — Janvier 2023</div>
+          <div class="tl-title">Developpeur Full Stack <span class="badge">Stage</span></div>
+          <div class="tl-org">EasyCom Solution · Benin</div>
+          <div class="tl-desc">Developpement de 5+ applications ERP Odoo avec modules personnalises et architecture SaaS collaborative (Next.js/TypeScript). Implementation complete : authentification, gestion documentaire, UI responsive et APIs REST.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:0.8rem;font-weight:600;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;">🎓 Formation</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="tl-date">Septembre 2024 — 2026</div>
+          <div class="tl-title">Master Developpement Mobile et IoT</div>
+          <div class="tl-org">Paris Ynov Campus</div>
+          <div class="tl-desc">Modules : architecture logicielle, IoT, CI/CD, gestion de projet IT. Specialisation en systemes embarques, objets connectes et integrations capteurs.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="tl-date">Septembre 2021 — Juillet 2024</div>
+          <div class="tl-title">Bachelor Expertise Informatique</div>
+          <div class="tl-org">EPITECH</div>
+          <div class="tl-desc">Modules : C, C++, Haskell, DevOps, IA (Python/C++). Distinctions : Top 3 concours Epitech x Interswitch (Lagos 2024), assistant pedagogique et president association Cobra.</div>
+        </div>
+      </div>
+
+      <p style="font-size:0.8rem;font-weight:600;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin:2rem 0 1.5rem;">🏆 Certifications</p>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        <div class="cert-card">
+          <div class="cert-issuer">Certification</div>
+          <div class="cert-name">REST API Design, Development & Management</div>
+          <div class="cert-date">Validee</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">Certification</div>
+          <div class="cert-name">Flutter & Dart - L'essentiel</div>
+          <div class="cert-date">En cours</div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-issuer">Disponibilite</div>
+          <div class="cert-name">Alternance / Stage Master 2</div>
+          <div class="cert-date">Rythme : 2 semaines entreprise / 1 semaine cours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section id="projects" class="fade-in">
+  <p class="section-label" id="projects-section-label">Projets selectionnes</p>
+  <h2 id="projects-section-title">Mes réalisations</h2>
+
+  <!-- <p style="color:var(--muted);margin-bottom:1.2rem;">Une selection de projets publics et prives.</p> -->
+  <div id="gh-header-area" style="margin-bottom:2rem;"></div>
+  <div class="projects-grid" id="projects-grid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact" class="fade-in">
+  <p class="section-label" id="contact-section-label">Contact</p>
+  <h2 id="contact-section-title">Travaillons ensemble</h2>
+  <div class="contact-wrapper">
+    <div>
+      <p style="color:var(--muted);margin-bottom:1.5rem;font-size:0.95rem;" id="contact-intro">Ouvert à toute collaboration. Vous avez une opportunité ou un projet en tête ? Je suis ravi d'en discuter avec vous.</p>
+      <div class="contact-links">
+        <a class="contact-item" href="mailto:mousshanim12@gmail.com" id="contact-email">
+          <span class="contact-icon">📧</span> mousshanim12@gmail.com
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/hanim-moussa-yari-967375208" target="_blank" id="contact-linkedin">
+          <span class="contact-icon">💼</span> LinkedIn
+        </a>
+        <a class="contact-item" href="CV.pdf" id="contact-cv" download>
+          <span class="contact-icon">📄</span> <span id="contact-cv-text">Télécharger mon CV</span>
+        </a>
+        <a class="contact-item" href="https://github.com/LFlem" target="_blank" id="contact-github">
+          <span class="contact-icon">🐙</span> github.com/LFlem
+        </a>
+        <a class="contact-item" href="tel:+33767180304" id="contact-phone">
+          <span class="contact-icon">📱</span>+33 07 67 18 03 04
+        </a>
+        <a class="contact-item" href="#" id="contact-location-item">
+          <span class="contact-icon">📍</span> <span id="contact-location-text">France</span>
+        </a>
+      </div>
+    </div>
+    <div>
+      <form class="contact-form" id="contact-form">
+        <div class="form-group">
+          <label class="form-label" id="label-name">Nom</label>
+          <input class="form-input" id="form-name" name="from_name" type="text" placeholder="Votre nom" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" id="label-email">Email</label>
+          <input class="form-input" id="form-email" name="from_email" type="email" placeholder="votre@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" id="label-subject">Sujet</label>
+          <input class="form-input" id="form-subject" name="subject" type="text" placeholder="Sujet de votre message" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" id="label-message">Message</label>
+          <textarea class="form-textarea" id="form-message" name="message" placeholder="Décrivez votre projet ou opportunité…" required></textarea>
+        </div>
+        <!-- <p class="form-note">Formulaire connecte a EmailJS. Les identifiants sont charges depuis le fichier .env (serveur local requis).</p> -->
+        <button class="btn btn-primary" id="contact-submit" type="submit" style="width:fit-content;">Envoyer →</button>
+        <p class="form-status" id="form-status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p id="footer-text">© <span id="year"></span> — Portfolio construit avec ❤️ · Propulsé par l'API GitHub</p>
+</footer>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  const githubUsername = 'LFlem';
+
+  const i18n = {
+    fr: {
+      'nav.about': 'À propos',
+      'nav.skills': 'Compétences',
+      'nav.parcours': 'Parcours',
+      'nav.projects': 'Projets',
+      'nav.contact': 'Contact',
+      'hero.availability': 'Disponible pour de nouvelles opportunités',
+      'hero.prefix': 'Développeur',
+      'hero.bio': "Développeur Full Stack avec 3 ans d'experience en solutions agiles, je transforme les besoins fonctionnels en solutions techniques performantes, du backend à l'interface utilisateur.",
+      'hero.ctaProjects': 'Voir mes projets →',
+      'hero.ctaContact': 'Me contacter',
+      'hero.stats.repos': 'Repos publics',
+      'hero.stats.stars': 'Stars reçues',
+      'hero.stats.years': "Ans d'expérience",
+      'hero.stats.langs': 'Langages utilisés',
+      'projects.label': 'Projets selectionnes',
+      'projects.title': 'Mes réalisations',
+      'about.label': 'À propos',
+      'about.title': 'Qui suis-je ?',
+      'about.p1': 'Determine a transformer les idees en applications concretes, je conçois des solutions full stack et mobiles en environnement Agile avec un fort accent sur la qualite logicielle.',
+      'about.p2': "J'ai travaille sur des applications web, ERP et PWA, avec des stacks TypeScript, Python, Node.js, Next.js, Flutter et PostgreSQL, en passant par l'authentification JWT et les APIs REST.",
+      'about.p3': "Autonome et force de proposition, je maintiens une veille active sur les technologies emergentes (IA, IoT, XR) et l'amelioration continue des workflows de developpement.",
+      'about.info.locationLabel': 'Localisation',
+      'about.info.locationValue': 'France',
+      'about.info.statusLabel': 'Statut',
+      'about.info.statusValue': 'Alternance/Stage Master 2 dès septembre 2026',
+      'about.info.educationLabel': 'Formation',
+      'about.info.educationValue': 'Master Developpement Mobile & IoT (Paris Ynov Campus)',
+      'about.info.languagesLabel': 'Langues',
+      'about.info.languagesValue': 'Francais (pro) / Anglais (B1)',
+      'about.info.specialityLabel': 'Specialite',
+      'about.info.specialityValue': 'Full Stack, Mobile, API et IoT',
+      'skills.label': 'Compétences',
+      'skills.title': 'Stack technique',
+      'skills.cat.frontend': 'Frontend',
+      'skills.cat.backend': 'Backend',
+      'skills.cat.database': 'Bases de données',
+      'skills.cat.devops': 'DevOps & Cloud',
+      'skills.cat.tools': 'Outils',
+      'skills.cat.methods': 'Méthodes',
+      'parcours.label': 'Parcours',
+      'parcours.title': 'Expérience & Formation',
+      'parcours.expTitle': '💼 Expériences',
+      'parcours.eduTitle': '🎓 Formation',
+      'parcours.certTitle': '🏆 Certifications',
+      'exp1.date': 'Juillet — Septembre 2025',
+      'exp1.title': 'Developpeur Mobile',
+      'exp1.badge': 'Stage',
+      'exp1.org': "P'titsPas · France",
+      'exp1.desc': "Developpement d'une PWA multi-roles avec architecture MVC, authentification JWT et gestion des droits d'acces. Integration backend NestJS/PostgreSQL avec optimisation UX (+20% de performance) en equipe de 6 personnes.",
+      'exp2.date': 'Fevrier — Mai 2024',
+      'exp2.title': 'Developpeur Jeu Mobile',
+      'exp2.badge': 'Stage',
+      'exp2.org': 'Leti Arts · Ghana',
+      'exp2.desc': "Developpement de fonctionnalites Unity (IA, mecaniques avancees), optimisation JavaScript/HTML5 (+25%) et creation d'un site web interactif de promotion. Collaboration avec une equipe internationale de 8 developpeurs.",
+      'exp3.date': 'Septembre 2023 — Janvier 2024',
+      'exp3.title': 'Assistant Pedagogique',
+      'exp3.badge': 'Alternance',
+      'exp3.org': 'Epitech',
+      'exp3.desc': "Animation de modules (architecture logicielle, IoT, CI/CD, gestion de projet IT), accompagnement de 40+ etudiants sur projets C/C++ et Python, amelioration du taux de reussite de +30%.",
+      'exp4.date': 'Septembre 2022 — Janvier 2023',
+      'exp4.title': 'Developpeur Full Stack',
+      'exp4.badge': 'Stage',
+      'exp4.org': 'EasyCom Solution · Benin',
+      'exp4.desc': 'Developpement de 5+ applications ERP Odoo avec modules personnalises et architecture SaaS collaborative (Next.js/TypeScript). Implementation complete : authentification, gestion documentaire, UI responsive et APIs REST.',
+      'edu1.date': 'Septembre 2024 — 2026',
+      'edu1.title': 'Master Developpement Mobile et IoT',
+      'edu1.org': 'Paris Ynov Campus',
+      'edu1.desc': 'Modules : architecture logicielle, IoT, CI/CD, gestion de projet IT. Specialisation en systemes embarques, objets connectes et integrations capteurs.',
+      'edu2.date': 'Septembre 2021 — Juillet 2024',
+      'edu2.title': 'Bachelor Expertise Informatique',
+      'edu2.org': 'EPITECH',
+      'edu2.desc': 'Modules : C, C++, Haskell, DevOps, IA (Python/C++). Distinctions : Top 3 concours Epitech x Interswitch (Lagos 2024), assistant pedagogique et president association Cobra.',
+      'cert1.issuer': 'Certification',
+      'cert1.name': 'REST API Design, Development & Management',
+      'cert1.date': 'Validee',
+      'cert2.issuer': 'Certification',
+      'cert2.name': "Flutter & Dart - L'essentiel",
+      'cert2.date': 'En cours',
+      'cert3.issuer': 'Disponibilite',
+      'cert3.name': 'Alternance / Stage Master 2',
+      'cert3.date': 'Rythme : 2 semaines entreprise / 1 semaine cours',
+      'projects.empty': 'Aucun projet selectionne.',
+      'projects.viewGithub': 'Voir sur GitHub →',
+      'projects.private': 'Projet prive (non public)',
+      'projects.type.public': 'Public',
+      'projects.type.private': 'Prive',
+      'github.repos': 'repos',
+      'github.gists': 'gists',
+      'github.followers': 'followers',
+      'github.profile': 'Voir le profil →',
+      'contact.label': 'Contact',
+      'contact.title': 'Travaillons ensemble',
+      'contact.intro': "Ouvert à toute collaboration. Vous avez une opportunité ou un projet en tête ? Je suis ravi d'en discuter avec vous.",
+      'contact.cv': 'Télécharger mon CV',
+      'form.name': 'Nom',
+      'form.email': 'Email',
+      'form.subject': 'Sujet',
+      'form.message': 'Message',
+      'form.placeholder.name': 'Votre nom',
+      'form.placeholder.subject': 'Sujet de votre message',
+      'form.placeholder.message': 'Décrivez votre projet ou opportunité…',
+      'form.send': 'Envoyer →',
+      'form.loadingConfig': 'Chargement de la configuration EmailJS...',
+      'form.configMissing': '⚠️ Configuration EmailJS manquante dans .env.',
+      'form.fillAll': 'Merci de remplir tous les champs.',
+      'form.sending': 'Envoi en cours...',
+      'form.success': 'Message envoye avec succes. Merci !',
+      'form.error': "Erreur lors de l'envoi. Reessayez dans un instant.",
+      'form.configErrorPrefix': '⚠️ Configuration EmailJS : ',
+      'form.configErrorSuffix': '. Verifiez que config.js existe ou lancez via un serveur local.',
+      'footer.text': "— Portfolio construit avec ❤️ · Propulsé par l'API GitHub",
+      'theme.title': 'Changer le thème',
+      'lang.switch': 'Switch to English'
+    },
+    en: {
+      'nav.about': 'About',
+      'nav.skills': 'Skills',
+      'nav.parcours': 'Journey',
+      'nav.projects': 'Projects',
+      'nav.contact': 'Contact',
+      'hero.availability': 'Available for new opportunities',
+      'hero.prefix': 'Developer',
+      'hero.bio': 'Full Stack developer with 3 years of experience in agile solutions, turning functional needs into high-performance technical solutions from backend to user interface.',
+      'hero.ctaProjects': 'View my projects →',
+      'hero.ctaContact': 'Contact me',
+      'hero.stats.repos': 'Public repos',
+      'hero.stats.stars': 'Stars received',
+      'hero.stats.years': 'Years of experience',
+      'hero.stats.langs': 'Languages used',
+      'projects.label': 'Selected projects',
+      'projects.title': 'My work',
+      'about.label': 'About',
+      'about.title': 'Who am I?',
+      'about.p1': 'Driven to transform ideas into concrete applications, I design full stack and mobile solutions in Agile environments with a strong focus on software quality.',
+      'about.p2': 'I have worked on web apps, ERP systems, and PWAs with TypeScript, Python, Node.js, Next.js, Flutter, and PostgreSQL, including JWT authentication and REST APIs.',
+      'about.p3': 'Autonomous and proactive, I keep up with emerging technologies (AI, IoT, XR) and continuously improve development workflows.',
+      'about.info.locationLabel': 'Location',
+      'about.info.locationValue': 'France',
+      'about.info.statusLabel': 'Status',
+      'about.info.statusValue': 'Master 2 internship/work-study from September 2026',
+      'about.info.educationLabel': 'Education',
+      'about.info.educationValue': 'Master in Mobile Development & IoT (Paris Ynov Campus)',
+      'about.info.languagesLabel': 'Languages',
+      'about.info.languagesValue': 'French (professional) / English (B1)',
+      'about.info.specialityLabel': 'Specialty',
+      'about.info.specialityValue': 'Full Stack, Mobile, APIs, and IoT',
+      'skills.label': 'Skills',
+      'skills.title': 'Technical stack',
+      'skills.cat.frontend': 'Frontend',
+      'skills.cat.backend': 'Backend',
+      'skills.cat.database': 'Databases',
+      'skills.cat.devops': 'DevOps & Cloud',
+      'skills.cat.tools': 'Tools',
+      'skills.cat.methods': 'Methods',
+      'parcours.label': 'Journey',
+      'parcours.title': 'Experience & Education',
+      'parcours.expTitle': '💼 Experience',
+      'parcours.eduTitle': '🎓 Education',
+      'parcours.certTitle': '🏆 Certifications',
+      'exp1.date': 'July — September 2025',
+      'exp1.title': 'Mobile Developer',
+      'exp1.badge': 'Internship',
+      'exp1.org': "P'titsPas · France",
+      'exp1.desc': 'Developed a multi-role PWA with MVC architecture, JWT authentication, and access-rights management. Integrated NestJS/PostgreSQL backend with UX optimization (+20% performance) in a 6-person team.',
+      'exp2.date': 'February — May 2024',
+      'exp2.title': 'Mobile Game Developer',
+      'exp2.badge': 'Internship',
+      'exp2.org': 'Leti Arts · Ghana',
+      'exp2.desc': 'Developed Unity features (AI, advanced mechanics), optimized JavaScript/HTML5 (+25%), and built an interactive promotional website. Collaborated with an international team of 8 developers.',
+      'exp3.date': 'September 2023 — January 2024',
+      'exp3.title': 'Teaching Assistant',
+      'exp3.badge': 'Work-study',
+      'exp3.org': 'Epitech',
+      'exp3.desc': 'Led modules (software architecture, IoT, CI/CD, IT project management), coached 40+ students on C/C++ and Python projects, and improved success rate by +30%.',
+      'exp4.date': 'September 2022 — January 2023',
+      'exp4.title': 'Full Stack Developer',
+      'exp4.badge': 'Internship',
+      'exp4.org': 'EasyCom Solution · Benin',
+      'exp4.desc': 'Developed 5+ Odoo ERP applications with custom modules and collaborative SaaS architecture (Next.js/TypeScript). Delivered authentication, document management, responsive UI, and REST APIs.',
+      'edu1.date': 'September 2024 — 2026',
+      'edu1.title': 'Master in Mobile Development and IoT',
+      'edu1.org': 'Paris Ynov Campus',
+      'edu1.desc': 'Modules: software architecture, IoT, CI/CD, IT project management. Focus on embedded systems, connected devices, and sensor integrations.',
+      'edu2.date': 'September 2021 — July 2024',
+      'edu2.title': 'Bachelor in IT Expertise',
+      'edu2.org': 'EPITECH',
+      'edu2.desc': 'Modules: C, C++, Haskell, DevOps, AI (Python/C++). Distinctions: Top 3 in Epitech x Interswitch challenge (Lagos 2024), teaching assistant, and Cobra association president.',
+      'cert1.issuer': 'Certification',
+      'cert1.name': 'REST API Design, Development & Management',
+      'cert1.date': 'Completed',
+      'cert2.issuer': 'Certification',
+      'cert2.name': 'Flutter & Dart - Essentials',
+      'cert2.date': 'In progress',
+      'cert3.issuer': 'Availability',
+      'cert3.name': 'Master 2 internship / work-study',
+      'cert3.date': 'Schedule: 2 weeks in company / 1 week in class',
+      'projects.empty': 'No selected project.',
+      'projects.viewGithub': 'View on GitHub →',
+      'projects.private': 'Private project (not public)',
+      'projects.type.public': 'Public',
+      'projects.type.private': 'Private',
+      'github.repos': 'repos',
+      'github.gists': 'gists',
+      'github.followers': 'followers',
+      'github.profile': 'View profile →',
+      'contact.label': 'Contact',
+      'contact.title': 'Let us work together',
+      'contact.intro': 'Open to collaboration, internships, and work-study opportunities. Have a project or role in mind? I would be glad to discuss it with you.',
+      'contact.cv': 'Download my resume',
+      'form.name': 'Name',
+      'form.email': 'Email',
+      'form.subject': 'Subject',
+      'form.message': 'Message',
+      'form.placeholder.name': 'Your name',
+      'form.placeholder.subject': 'Message subject',
+      'form.placeholder.message': 'Describe your project or opportunity...',
+      'form.send': 'Send →',
+      'form.loadingConfig': 'Loading EmailJS configuration...',
+      'form.configMissing': '⚠️ EmailJS configuration missing in .env.',
+      'form.fillAll': 'Please fill in all fields.',
+      'form.sending': 'Sending...',
+      'form.success': 'Message sent successfully. Thank you!',
+      'form.error': 'Error while sending. Please try again shortly.',
+      'form.configErrorPrefix': '⚠️ EmailJS configuration: ',
+      'form.configErrorSuffix': '. Make sure config.js exists or run from a local server.',
+      'footer.text': "— Portfolio built with ❤️ · Powered by GitHub API",
+      'theme.title': 'Switch theme',
+      'lang.switch': 'Basculer en francais'
+    }
+  };
+
+  let currentLang = localStorage.getItem('lang') || 'fr';
+
+  function t(key) {
+    return (i18n[currentLang] && i18n[currentLang][key]) || i18n.fr[key] || key;
+  }
+
+  function setText(id, key) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = t(key);
+  }
+
+  function setQueryText(selector, key) {
+    const el = document.querySelector(selector);
+    if (el) el.textContent = t(key);
+  }
+
+  function setQueryHTML(selector, value) {
+    const el = document.querySelector(selector);
+    if (el) el.innerHTML = value;
+  }
+
+  function getProjectTypeLabel(type) {
+    return (type || '').toLowerCase().startsWith('prive') ? t('projects.type.private') : t('projects.type.public');
+  }
+
+  function getProjectDescription(project) {
+    if (currentLang === 'en' && project.descriptionEn) return project.descriptionEn;
+    return project.description;
+  }
+
+  function applyTranslations() {
+    document.documentElement.lang = currentLang;
+
+    setText('nav-about-link', 'nav.about');
+    setText('nav-skills-link', 'nav.skills');
+    setText('nav-parcours-link', 'nav.parcours');
+    setText('nav-projects-link', 'nav.projects');
+    setText('nav-contact-link', 'nav.contact');
+
+    setText('hero-availability', 'hero.availability');
+    setText('hero-prefix', 'hero.prefix');
+    setText('hero-bio', 'hero.bio');
+    setText('hero-cta-projects', 'hero.ctaProjects');
+    setText('hero-cta-contact', 'hero.ctaContact');
+    setText('stat-label-repos', 'hero.stats.repos');
+    setText('stat-label-stars', 'hero.stats.stars');
+    setText('stat-label-years', 'hero.stats.years');
+    setText('stat-label-langs', 'hero.stats.langs');
+
+    setText('projects-section-label', 'projects.label');
+    setText('projects-section-title', 'projects.title');
+
+    setQueryText('#about .section-label', 'about.label');
+    setQueryText('#about h2', 'about.title');
+    setQueryText('#about .about-text p:nth-child(1)', 'about.p1');
+    setQueryText('#about .about-text p:nth-child(2)', 'about.p2');
+    setQueryText('#about .about-text p:nth-child(3)', 'about.p3');
+    setQueryText('#about .about-info .info-row:nth-child(1) .info-label', 'about.info.locationLabel');
+    setQueryText('#about .about-info .info-row:nth-child(1) .info-val', 'about.info.locationValue');
+    setQueryText('#about .about-info .info-row:nth-child(2) .info-label', 'about.info.statusLabel');
+    setQueryText('#about .about-info .info-row:nth-child(2) .info-val', 'about.info.statusValue');
+    setQueryText('#about .about-info .info-row:nth-child(3) .info-label', 'about.info.educationLabel');
+    setQueryText('#about .about-info .info-row:nth-child(3) .info-val', 'about.info.educationValue');
+    setQueryText('#about .about-info .info-row:nth-child(4) .info-label', 'about.info.languagesLabel');
+    setQueryText('#about .about-info .info-row:nth-child(4) .info-val', 'about.info.languagesValue');
+    setQueryText('#about .about-info .info-row:nth-child(5) .info-label', 'about.info.specialityLabel');
+    setQueryText('#about .about-info .info-row:nth-child(5) .info-val', 'about.info.specialityValue');
+
+    setQueryText('#skills .section-label', 'skills.label');
+    setQueryText('#skills h2', 'skills.title');
+    setQueryText('#skills .skill-card:nth-child(1) .skill-cat', 'skills.cat.frontend');
+    setQueryText('#skills .skill-card:nth-child(2) .skill-cat', 'skills.cat.backend');
+    setQueryText('#skills .skill-card:nth-child(3) .skill-cat', 'skills.cat.database');
+    setQueryText('#skills .skill-card:nth-child(4) .skill-cat', 'skills.cat.devops');
+    setQueryText('#skills .skill-card:nth-child(5) .skill-cat', 'skills.cat.tools');
+    setQueryText('#skills .skill-card:nth-child(6) .skill-cat', 'skills.cat.methods');
+
+    setQueryText('#parcours .section-label', 'parcours.label');
+    setQueryText('#parcours h2', 'parcours.title');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) > p', 'parcours.expTitle');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) > p:nth-of-type(1)', 'parcours.eduTitle');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) > p:nth-of-type(2)', 'parcours.certTitle');
+
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-date', 'exp1.date');
+    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-title', `${t('exp1.title')} <span class="badge">${t('exp1.badge')}</span>`);
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-org', 'exp1.org');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-desc', 'exp1.desc');
+
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-date', 'exp2.date');
+    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-title', `${t('exp2.title')} <span class="badge">${t('exp2.badge')}</span>`);
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-org', 'exp2.org');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-desc', 'exp2.desc');
+
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-date', 'exp3.date');
+    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-title', `${t('exp3.title')} <span class="badge">${t('exp3.badge')}</span>`);
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-org', 'exp3.org');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-desc', 'exp3.desc');
+
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-date', 'exp4.date');
+    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-title', `${t('exp4.title')} <span class="badge">${t('exp4.badge')}</span>`);
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-org', 'exp4.org');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-desc', 'exp4.desc');
+
+    setQueryText('#parcours .tl-grid > div:nth-child(2) .timeline-item:nth-child(1) .tl-date', 'edu1.date');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) .timeline-item:nth-child(1) .tl-title', 'edu1.title');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) .timeline-item:nth-child(1) .tl-org', 'edu1.org');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) .timeline-item:nth-child(1) .tl-desc', 'edu1.desc');
+
+    setQueryText('#parcours .tl-grid > div:nth-child(2) .timeline-item:nth-child(2) .tl-date', 'edu2.date');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) .timeline-item:nth-child(2) .tl-title', 'edu2.title');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) .timeline-item:nth-child(2) .tl-org', 'edu2.org');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) .timeline-item:nth-child(2) .tl-desc', 'edu2.desc');
+
+    setQueryText('#parcours .tl-grid > div:nth-child(2) > div[style] .cert-card:nth-child(1) .cert-issuer', 'cert1.issuer');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) > div[style] .cert-card:nth-child(1) .cert-name', 'cert1.name');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) > div[style] .cert-card:nth-child(1) .cert-date', 'cert1.date');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) > div[style] .cert-card:nth-child(2) .cert-issuer', 'cert2.issuer');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) > div[style] .cert-card:nth-child(2) .cert-name', 'cert2.name');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) > div[style] .cert-card:nth-child(2) .cert-date', 'cert2.date');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) > div[style] .cert-card:nth-child(3) .cert-issuer', 'cert3.issuer');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) > div[style] .cert-card:nth-child(3) .cert-name', 'cert3.name');
+    setQueryText('#parcours .tl-grid > div:nth-child(2) > div[style] .cert-card:nth-child(3) .cert-date', 'cert3.date');
+
+    setText('contact-section-label', 'contact.label');
+    setText('contact-section-title', 'contact.title');
+    setText('contact-intro', 'contact.intro');
+    setText('contact-cv-text', 'contact.cv');
+
+    setText('label-name', 'form.name');
+    setText('label-email', 'form.email');
+    setText('label-subject', 'form.subject');
+    setText('label-message', 'form.message');
+
+    const formName = document.getElementById('form-name');
+    const formSubject = document.getElementById('form-subject');
+    const formMessage = document.getElementById('form-message');
+    if (formName) formName.placeholder = t('form.placeholder.name');
+    if (formSubject) formSubject.placeholder = t('form.placeholder.subject');
+    if (formMessage) formMessage.placeholder = t('form.placeholder.message');
+
+    const contactButton = document.getElementById('contact-submit');
+    if (contactButton) contactButton.textContent = t('form.send');
+
+    const footerText = document.getElementById('footer-text');
+    if (footerText) {
+      footerText.innerHTML = `© <span id="year"></span> ${t('footer.text')}`;
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+
+    const themeBtn = document.getElementById('themeToggle');
+    const langBtn = document.getElementById('langToggle');
+    if (themeBtn) themeBtn.title = t('theme.title');
+    if (langBtn) {
+      langBtn.textContent = currentLang === 'fr' ? 'EN' : 'FR';
+      langBtn.title = t('lang.switch');
+    }
+  }
+
+  /* ── THEME ── */
+  const toggle = document.getElementById('themeToggle');
+  const langToggle = document.getElementById('langToggle');
+  const saved = localStorage.getItem('theme') || 'light';
+  document.documentElement.dataset.theme = saved;
+  toggle.textContent = saved === 'dark' ? '☀️' : '🌙';
+  toggle.addEventListener('click', () => {
+    const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = t;
+    toggle.textContent = t === 'dark' ? '☀️' : '🌙';
+    localStorage.setItem('theme', t);
+  });
+
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      localStorage.setItem('lang', currentLang);
+      applyTranslations();
+      renderSelectedProjects();
+      loadGitHubProfile(githubUsername);
+      if (contactSubmit && contactSubmit.disabled && !formStatus.textContent) {
+        formStatus.textContent = t('form.loadingConfig');
+      }
+    });
+  }
+
+  applyTranslations();
+
+  /* ── YEAR ── */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ── SCROLL FADE ── */
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  /* ── GITHUB COLORS ── */
+  const langColors = {
+    JavaScript:'#f1e05a', TypeScript:'#3178c6', Python:'#3572A5',
+    Java:'#b07219', 'C#':'#239120', Go:'#00ADD8', Rust:'#dea584',
+    PHP:'#4F5D95', HTML:'#e34c26', CSS:'#563d7c', Ruby:'#701516',
+    Kotlin:'#A97BFF', Swift:'#F05138', Dart:'#00B4AB', 'C++':'#f34b7d',
+    C:'#555555', Shell:'#89e051', Vue:'#41b883', Svelte:'#ff3e00',
+    Scala:'#c22d40', R:'#198CE7', Elixir:'#6e4a7e', default:'#8b949e'
+  };
+  function getLangColor(lang) { return langColors[lang] || langColors.default; }
+
+  /* ── PROJECTS (SELECTION MANUELLE) ── */
+  const selectedProjects = [
+    {
+      name: 'NextManga',
+      owner: 'NextManga',
+      repo: 'NextManga',
+      description: 'Aider les lecteurs a trouver leur prochain manga favori grace a des recommandations intelligentes basees sur leurs lectures passees, leurs preferences et leurs filtres personnalises.',
+      descriptionEn: 'Helping readers discover their next favorite manga with smart recommendations based on past reads, preferences, and personalized filters.',
+      language: 'JavaScript',
+      tags: ['React Native', 'API REST', 'iOS', 'Android'],
+      link: 'https://github.com/NextManga/NextManga',
+      type: 'Public',
+      date: '2026'
+    },
+    {
+      name: 'EcoStory',
+      owner: 'LFlem',
+      repo: 'EcoStory',
+      description: 'Generateur d histoires interactives ou l utilisateur fait des choix qui influencent l environnement.',
+      descriptionEn: 'Interactive story generator where user choices influence the environment and story outcomes.',
+      language: 'Python',
+      tags: ['Python 3.9+', 'Streamlit', 'GitHub Pages'],
+      link: 'https://github.com/LFlem/EcoStory',
+      type: 'Public',
+      date: '2026'
+    },
+    {
+      name: 'flutter_cityweather_front',
+      owner: 'BlvckHL',
+      repo: 'flutter_cityweather_front',
+      description: 'Application mobile Flutter permettant de rechercher des villes et d afficher les conditions meteorologiques actuelles.',
+      descriptionEn: 'Flutter mobile app to search cities and display real-time weather conditions.',
+      language: 'Dart',
+      tags: ['Flutter SDK 3.0+', 'Dart SDK'],
+      link: 'https://github.com/BlvckHL/flutter_cityweather_front',
+      type: 'Public',
+      date: '2025'
+    },
+    {
+      name: 'Tp_Evaluation',
+      owner: 'LFlem',
+      repo: 'Tp_Evaluation',
+      description: 'Application web de gestion de projets pour creer des projets, attacher des documents et associer des membres d equipe.',
+      descriptionEn: 'Web project-management app to create projects, attach documents, and assign team members.',
+      language: 'TypeScript',
+      tags: ['TypeScript', 'Web App'],
+      link: 'https://github.com/LFlem/Tp_Evaluation',
+      type: 'Public',
+      date: '2025'
+    },
+    {
+      name: 'MyPokedexFront',
+      owner: 'MyPokedexx',
+      repo: 'MyPokedexFront',
+      description: 'Application Pokedex multi-pages connectee a l API publique PokeAPI pour pratiquer React.',
+      descriptionEn: 'Multi-page Pokedex app connected to the public PokeAPI to practice React development.',
+      language: 'TypeScript',
+      tags: ['React', 'TypeScript', 'PokeAPI'],
+      link: 'https://github.com/MyPokedexx/MyPokedexFront',
+      type: 'Public',
+      date: '2025'
+    },
+    {
+      name: 'fitconnect-frontend',
+      owner: 'M2WebServices',
+      repo: 'fitconnect-frontend',
+      description: 'Frontend web de FitConnect (React + TypeScript) consommant une API GraphQL et des WebSockets pour chat, challenges, planning et classement.',
+      descriptionEn: 'FitConnect web frontend (React + TypeScript) using a GraphQL API and WebSockets for chat, challenges, scheduling, and leaderboard.',
+      language: 'TypeScript',
+      tags: ['React', 'TypeScript', 'GraphQL', 'WebSockets'],
+      link: 'https://github.com/M2WebServices/fitconnect-frontend',
+      type: 'Public',
+      date: '2026'
+    },
+    // {
+    //   name: 'Projet prive 1',
+    //   owner: '',
+    //   repo: '',
+    //   description: 'Ajoutez ici un projet prive avec une description orientee impact (contexte, votre role, resultat).',
+    //   language: 'TypeScript',
+    //   tags: ['Prive', 'Confidentiel'],
+    //   link: '',
+    //   type: 'Prive',
+    //   date: '2026'
+    // }
+  ];
+
+  function renderSelectedProjects() {
+    const grid = document.getElementById('projects-grid');
+    if (!grid) return;
+
+    if (!selectedProjects.length) {
+      grid.innerHTML = `<p style="color:var(--muted)">${t('projects.empty')}</p>`;
+      return;
+    }
+
+    grid.innerHTML = selectedProjects.map(project => `
+      <div class="project-card" style="${project.type === 'Prive' ? 'border: 2px solid var(--accent);' : ''}">
+        <div class="proj-name">
+          ${project.name}
+          <span class="tag" style="font-size:0.7rem;padding:0.15rem 0.5rem;${project.type === 'Prive' ? 'background:var(--accent);color:#fff;' : ''}">${getProjectTypeLabel(project.type)}</span>
+        </div>
+        <p class="proj-desc">${getProjectDescription(project)}</p>
+        <div class="proj-meta">
+          ${project.language ? `<span><span class="lang-dot" style="background:${getLangColor(project.language)}"></span>${project.language}</span>` : ''}
+          ${project.tags ? project.tags.map(tag => `<span class="tag" style="font-size:0.65rem;padding:0.15rem 0.45rem;">${tag}</span>`).join('') : ''}
+          ${project.owner && project.repo ? `<span>👤 ${project.owner}/${project.repo}</span>` : ''}
+          ${project.date ? `<span>📅 ${project.date}</span>` : ''}
+        </div>
+        ${project.link ? `<a class="proj-link" href="${project.link}" target="_blank">${t('projects.viewGithub')}</a>` : `<span class="proj-link" style="opacity:0.7;cursor:default;">${t('projects.private')}</span>`}
+      </div>
+    `).join('');
+  }
+
+  async function loadGitHubProfile(username) {
+    try {
+      const res = await fetch(`https://api.github.com/users/${username}`);
+      if (!res.ok) return;
+      const user = await res.json();
+
+      // Afficher le profil GitHub
+      const headerArea = document.getElementById('gh-header-area');
+      if (headerArea) {
+        headerArea.innerHTML = `
+          <div class="gh-header">
+            <div class="gh-profile">
+              <img class="gh-avatar" src="${user.avatar_url}" alt="${username}">
+              <span class="gh-username">@${username}</span>
+            </div>
+            <div class="gh-stats">
+              <div class="gh-stat">📦 ${user.public_repos} ${t('github.repos')}</div>
+              <div class="gh-stat">⭐ ${user.public_gists || 0} ${t('github.gists')}</div>
+              <div class="gh-stat">👥 ${user.followers} ${t('github.followers')}</div>
+            </div>
+            <a href="https://github.com/${username}" target="_blank" class="btn btn-ghost" style="font-size:0.8rem;padding:0.4rem 0.9rem;">${t('github.profile')}</a>
+          </div>
+        `;
+      }
+
+      // Mettre à jour les stats du hero
+      document.getElementById('stat-repos').textContent = user.public_repos;
+    } catch (e) {
+      console.log('Info GitHub non disponible');
+    }
+  }
+
+  renderSelectedProjects();
+
+  // Stats de la selection manuelle (projets + langages)
+  const projectLangs = [...new Set(selectedProjects.map(p => p.language).filter(Boolean))];
+  document.getElementById('stat-langs').textContent = projectLangs.length;
+
+  // Charger le profil GitHub par defaut
+  loadGitHubProfile(githubUsername);
+
+  /* ── CONTACT FORM (EmailJS) ── */
+  const EMAILJS_CONFIG = {
+    serviceId: '',
+    templateId: '',
+    publicKey: ''
+  };
+
+  const contactForm = document.getElementById('contact-form');
+  const contactSubmit = document.getElementById('contact-submit');
+  const formStatus = document.getElementById('form-status');
+
+  function parseEnvFile(content) {
+    const env = {};
+    content.split(/\r?\n/).forEach(line => {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) return;
+      const idx = trimmed.indexOf('=');
+      if (idx === -1) return;
+      const key = trimmed.slice(0, idx).trim();
+      const value = trimmed.slice(idx + 1).trim();
+      env[key] = value;
+    });
+    return env;
+  }
+
+  async function initEmailConfig() {
+    try {
+      // 1. Préférer window.EMAIL_CONFIG (chargé depuis config.js)
+      if (window.EMAIL_CONFIG && window.EMAIL_CONFIG.SERVICE_ID) {
+        EMAILJS_CONFIG.serviceId = window.EMAIL_CONFIG.SERVICE_ID;
+        EMAILJS_CONFIG.templateId = window.EMAIL_CONFIG.TEMPLATE_ID;
+        EMAILJS_CONFIG.publicKey = window.EMAIL_CONFIG.PUBLIC_KEY;
+      } else {
+        // 2. Fallback vers .env (serveur local requis)
+        const res = await fetch('.env', { cache: 'no-store' });
+        if (!res.ok) throw new Error('config.js et .env non disponibles');
+        const raw = await res.text();
+        const env = parseEnvFile(raw);
+
+        EMAILJS_CONFIG.serviceId = env.EMAILJS_SERVICE_ID || '';
+        EMAILJS_CONFIG.templateId = env.EMAILJS_TEMPLATE_ID || '';
+        EMAILJS_CONFIG.publicKey = env.EMAILJS_PUBLIC_KEY || '';
+      }
+
+      if (!EMAILJS_CONFIG.serviceId || !EMAILJS_CONFIG.templateId || !EMAILJS_CONFIG.publicKey) {
+        throw new Error('Variables EmailJS manquantes');
+      }
+
+      if (window.emailjs) {
+        emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+      }
+
+      contactSubmit.disabled = false;
+      formStatus.textContent = '';
+    } catch (err) {
+      contactSubmit.disabled = true;
+      formStatus.textContent = t('form.configErrorPrefix') + err.message + t('form.configErrorSuffix');
+    }
+  }
+
+  contactSubmit.disabled = true;
+  formStatus.textContent = t('form.loadingConfig');
+  initEmailConfig();
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!EMAILJS_CONFIG.serviceId || !EMAILJS_CONFIG.templateId || !EMAILJS_CONFIG.publicKey) {
+      formStatus.textContent = t('form.configMissing');
+      return;
+    }
+
+    const fromName = document.getElementById('form-name').value.trim();
+    const fromEmail = document.getElementById('form-email').value.trim();
+    const subject = document.getElementById('form-subject').value.trim();
+    const message = document.getElementById('form-message').value.trim();
+    const nameParts = fromName.split(/\s+/).filter(Boolean);
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ');
+
+    if (!fromName || !fromEmail || !subject || !message) {
+      formStatus.textContent = t('form.fillAll');
+      return;
+    }
+
+    contactSubmit.disabled = true;
+    formStatus.textContent = t('form.sending');
+
+    try {
+      const templateParams = {
+        name: fromName,
+        from_name: fromName,
+        from_firstname: firstName,
+        full_name: fromName,
+        from_lastname: lastName,
+        from_email: fromEmail,
+        fromEmail: fromEmail,
+        email: fromEmail,
+        sender_email: fromEmail,
+        user_email: fromEmail,
+        reply_to: fromEmail,
+        subject,
+        message,
+        to_email: 'mousshanim12@gmail.com',
+        to_name: 'Hanim Moussa Yari'
+      };
+
+      await emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams);
+
+      formStatus.textContent = t('form.success');
+      contactForm.reset();
+    } catch (err) {
+      formStatus.textContent = t('form.error');
+    } finally {
+      contactSubmit.disabled = false;
+    }
+  });
+
+  // Nav logo mise à jour
+  document.querySelector('.nav-logo').innerHTML = `Hmy<span>.</span>portfolio`;
+</script>
+</body>
+</html>
