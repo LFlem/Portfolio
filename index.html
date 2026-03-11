@@ -598,6 +598,12 @@
       <p style="font-size:0.8rem;font-weight:600;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1.5rem;">💼 Expériences</p>
       <div class="timeline">
         <div class="timeline-item">
+          <div class="tl-date">Janvier — Mars 2026</div>
+          <div class="tl-title">Developpeur Full Stack Web <span class="badge">Stage</span></div>
+          <div class="tl-org">EduManga · France</div>
+          <div class="tl-desc">Developpement d'une application web full stack (PHP, MySQL, JavaScript, HTML/CSS). Conception et gestion de bases de donnees avec systeme de droits d'acces utilisateurs, integration d'un systeme de paiement securise et suivi des transactions, et creation d'interfaces ergonomiques et responsive.</div>
+        </div>
+        <div class="timeline-item">
           <div class="tl-date">Juillet — Septembre 2025</div>
           <div class="tl-title">Developpeur Mobile <span class="badge">Stage</span></div>
           <div class="tl-org">P'titsPas · France</div>
@@ -785,6 +791,11 @@
       'parcours.expTitle': '💼 Expériences',
       'parcours.eduTitle': '🎓 Formation',
       'parcours.certTitle': '🏆 Certifications',
+      'exp0.date': 'Janvier — Mars 2026',
+      'exp0.title': 'Developpeur Full Stack Web',
+      'exp0.badge': 'Stage',
+      'exp0.org': 'EduManga · France',
+      'exp0.desc': "Developpement d'une application web full stack (PHP, MySQL, JavaScript, HTML/CSS). Conception et gestion de bases de donnees avec systeme de droits d'acces utilisateurs, integration d'un systeme de paiement securise et suivi des transactions, et creation d'interfaces ergonomiques et responsive.",
       'exp1.date': 'Juillet — Septembre 2025',
       'exp1.title': 'Developpeur Mobile',
       'exp1.badge': 'Stage',
@@ -900,6 +911,11 @@
       'parcours.expTitle': '💼 Experience',
       'parcours.eduTitle': '🎓 Education',
       'parcours.certTitle': '🏆 Certifications',
+      'exp0.date': 'January — March 2026',
+      'exp0.title': 'Full Stack Web Developer',
+      'exp0.badge': 'Internship',
+      'exp0.org': 'EduManga · France',
+      'exp0.desc': 'Developed a full stack web application (PHP, MySQL, JavaScript, HTML/CSS). Designed and managed databases with user access-rights control, integrated a secure payment system with transaction tracking, and created ergonomic responsive interfaces. Stack: PHP, MySQL, JavaScript, HTML, CSS, FileZilla, XAMPP.',
       'exp1.date': 'July — September 2025',
       'exp1.title': 'Mobile Developer',
       'exp1.badge': 'Internship',
@@ -1055,25 +1071,30 @@
     setQueryText('#parcours .tl-grid > div:nth-child(2) > p:nth-of-type(1)', 'parcours.eduTitle');
     setQueryText('#parcours .tl-grid > div:nth-child(2) > p:nth-of-type(2)', 'parcours.certTitle');
 
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-date', 'exp1.date');
-    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-title', `${t('exp1.title')} <span class="badge">${t('exp1.badge')}</span>`);
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-org', 'exp1.org');
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-desc', 'exp1.desc');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-date', 'exp0.date');
+    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-title', `${t('exp0.title')} <span class="badge">${t('exp0.badge')}</span>`);
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-org', 'exp0.org');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(1) .tl-desc', 'exp0.desc');
 
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-date', 'exp2.date');
-    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-title', `${t('exp2.title')} <span class="badge">${t('exp2.badge')}</span>`);
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-org', 'exp2.org');
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-desc', 'exp2.desc');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-date', 'exp1.date');
+    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-title', `${t('exp1.title')} <span class="badge">${t('exp1.badge')}</span>`);
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-org', 'exp1.org');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(2) .tl-desc', 'exp1.desc');
 
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-date', 'exp3.date');
-    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-title', `${t('exp3.title')} <span class="badge">${t('exp3.badge')}</span>`);
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-org', 'exp3.org');
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-desc', 'exp3.desc');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-date', 'exp2.date');
+    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-title', `${t('exp2.title')} <span class="badge">${t('exp2.badge')}</span>`);
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-org', 'exp2.org');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(3) .tl-desc', 'exp2.desc');
 
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-date', 'exp4.date');
-    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-title', `${t('exp4.title')} <span class="badge">${t('exp4.badge')}</span>`);
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-org', 'exp4.org');
-    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-desc', 'exp4.desc');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-date', 'exp3.date');
+    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-title', `${t('exp3.title')} <span class="badge">${t('exp3.badge')}</span>`);
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-org', 'exp3.org');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(4) .tl-desc', 'exp3.desc');
+
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(5) .tl-date', 'exp4.date');
+    setQueryHTML('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(5) .tl-title', `${t('exp4.title')} <span class="badge">${t('exp4.badge')}</span>`);
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(5) .tl-org', 'exp4.org');
+    setQueryText('#parcours .tl-grid > div:nth-child(1) .timeline-item:nth-child(5) .tl-desc', 'exp4.desc');
 
     setQueryText('#parcours .tl-grid > div:nth-child(2) .timeline-item:nth-child(1) .tl-date', 'edu1.date');
     setQueryText('#parcours .tl-grid > div:nth-child(2) .timeline-item:nth-child(1) .tl-title', 'edu1.title');
@@ -1180,6 +1201,18 @@
 
   /* ── PROJECTS (SELECTION MANUELLE) ── */
   const selectedProjects = [
+    {
+      name: 'JobApply',
+      owner: 'LFlem',
+      repo: 'JobApply',
+      description: "Application Streamlit de suivi de candidatures avec comptes utilisateurs, connexion securisee et extraction automatique des informations depuis n'importe quelle URL d'offre d'emploi via Claude AI.",
+      descriptionEn: 'Streamlit application to track job applications with user accounts, secure authentication, and automatic extraction of job-posting data from any offer URL using Claude AI.',
+      language: 'Python',
+      tags: ['Python', 'Streamlit', 'Claude AI', 'Authentication'],
+      link: 'https://github.com/LFlem/JobApply',
+      type: 'Public',
+      date: '2026'
+    },
     {
       name: 'NextManga',
       owner: 'NextManga',
